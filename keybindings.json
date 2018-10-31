@@ -1,0 +1,37 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    // emacs tab enable.    
+    {
+        "key": "ctrl-i",
+        "command": "emacs-tab.reindentCurrentLine",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-expandLineSelection",
+        "when": "textInputFocus"
+    },
+
+    // alt+h : delete word left.    
+    {
+        "key": "alt-h",
+        "command": "deleteWordLeft",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+backspace",
+        "command": "-deleteWordLeft",
+        "when": "textInputFocus && !editorReadonly"
+    },
+
+    // ctrl+u : delete left all in line.    
+    {
+        "key": "ctrl+u",
+        "command": "deleteAllLeft"
+    },
+    {
+        "key": "ctrl+u",
+        "command": "-cursorUndo",
+        "when": "textInputFocus"
+    },
+]
