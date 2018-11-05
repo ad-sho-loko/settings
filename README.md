@@ -10,9 +10,6 @@ Window10
 - Exported-2018-10-29.vssettings => Visual Studioのキー設定
 - keybindings.json => VSCODEの設定ファイル
 
-## Windowsキー設定（右下のIMEのプロパティ）
-無変換→IMEオフにする
-変換キー→IMEオンにする
 
 ## VSCODEの設定
 
@@ -27,4 +24,12 @@ caps2ctrl
 Ricty Diminished の導入。
 
 ## Gitの導入
-mintty.
+Git for Windowsで十分か
+
+## Windowsキー設定（右下のIMEのプロパティ）：ことえりとどっちか。
+無変換→IMEオフにする
+変換キー→IMEオンにする
+
+## ことえり
+Google IMEがいいかな。
+画像の設定が必要
