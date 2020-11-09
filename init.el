@@ -12,10 +12,8 @@
 (set-default-coding-systems 'utf-8)
 (prefer-coding-system 'utf-8)
 
-;;Packageインストーラ                                                               
-(require 'package)                                                                  
-(package-initialize)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+;; color-theme
+(load-theme 'misterioso t)
 
 ;; CaskをMacで利用できるようにする
 (require 'cask)
@@ -222,63 +220,8 @@
 (add-hook 'emacs-startup-hook 'rainbow-delimiters-using-stronger-colors)
 
 
-;; c-mode-common-hook は C/C++/Java の設定
-(require 'cc-mode)
-(add-hook 'c-mode-common-hook
-          (lambda ()
-            (setq c-default-style "k&r") ;; カーニハン・リッチースタイル
-            (setq indent-tabs-mode nil)  ;; タブは利用しない
-            (setq c-basic-offset 2)      ;; indent は 2 スペース
-            ))
-
-;; gtags(for C / C++)
-(add-to-list 'load-path "/usr/local/share/gtags")
-(autoload 'gtags-mode "gtags" "" t)
-(setq gtags-mode-hook
-      '(lambda ()
-         (local-set-key "\M-t" 'gtags-find-tag)    ;関数へジャンプ
-         (local-set-key "\M-r" 'gtags-find-rtag)   ;関数の参照元へジャンプ
-         (local-set-key "\M-s" 'gtags-find-symbol) ;変数の定義元/参照先へジャンプ
-         (local-set-key "\C-t" 'gtags-pop-stack)   ;前のバッファに戻る
-         ))
-(add-hook 'c-mode-hook 'gtags-mode)
-(add-hook 'c++-mode-hook 'gtags-mode)
-
-
-;; ヘッダファイルをC++として認識させる.
-(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
-
 ;; エラーチェック(flycheck)
 (add-hook 'c-mode-common-hook 'flycheck-mode)
-
-;; yasnippetは定型文をsnippetディレクトリに保存すれば使える.
-(eval-after-load "yasnippet"
-  '(progn
-     (define-key yas-keymap (kbd "<tab>") nil)
-     (yas-global-mode 1)))
-
-;; ironyは
-(require 'irony)
-(add-hook 'c-mode-hook 'irony-mode)
-(add-hook 'c++-mode-hook 'irony-mode)
-(add-hook 'objc-mode-hook 'irony-mode)
-;; (add-hook 'rust-mode-hook 'irony-mode)
-(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-;;(add-to-list 'company-backends 'company-backends)
-
-;;
-;;(when (require 'package nil 'noerror)
-;;  (add-to-list 'package-archives
-;;               '("melpa" . "http://melpa.milkbox.net/packages/"))
-;;  (package-initialize))
-
-;; yasnippet
-;;
-(eval-after-load "yasnippet"
-  '(progn
-     ;; companyと競合するのでyasnippetのフィールド移動は "C-i" のみにする
-     (define-key yas-keymap (kbd "<tab>") nil)
-     (yas-global-mode 1)))
 
 ;; company-mode : auto-completeの補完
 (when (locate-library "company")
